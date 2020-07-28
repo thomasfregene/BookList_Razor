@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int?}/{handler?}" @*Attribute routing*@
 @model BookList_Razor.Pages.BookList.IndexModel
 @{
 }
@@ -40,6 +40,7 @@
                     <th>
                         @Html.DisplayNameFor(m => m.Books.FirstOrDefault().Availability)
                     </th>
+                    <th></th>
                 </tr>
                 @foreach(var item in Model.Books)
                 {
@@ -49,6 +50,9 @@
                 <td>@Html.DisplayFor(m => item.Author)</td>
                 <td>@Html.DisplayFor(m => item.Price)</td>
                 <td>@Html.DisplayFor(m => item.Availability)</td>
+                <td>
+                    <button asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</button>
+                </td>
             </tr>
                 }
             </table>
