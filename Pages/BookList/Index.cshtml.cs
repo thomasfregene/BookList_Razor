@@ -13,6 +13,9 @@ namespace BookList_Razor.Pages.BookList
     {
         private readonly ApplicationDbContext _db;
 
+        [TempData]
+        public string Message { get; set; }
+
         public IndexModel(ApplicationDbContext db)
         {
             _db = db;

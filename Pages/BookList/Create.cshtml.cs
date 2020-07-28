@@ -12,6 +12,8 @@ namespace BookList_Razor.Pages.BookList
     {
         private readonly ApplicationDbContext _db;
 
+        [TempData]
+        public string Message { get; set; }
         public CreateModel(ApplicationDbContext db)
         {
             _db = db;
@@ -32,6 +34,7 @@ namespace BookList_Razor.Pages.BookList
             }
             _db.Books.Add(Book);
             await _db.SaveChangesAsync();
+            Message = "New Book Added Successfully!";
 
             return RedirectToPage("Index");
         }
